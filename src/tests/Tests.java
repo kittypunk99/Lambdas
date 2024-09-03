@@ -4,6 +4,7 @@ import lambda.Lambda;
 import streams.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -16,6 +17,7 @@ public class Tests {
         System.out.println(Lambda.mult(List.of(1.0, 2.0, 3.0, 4.0, 5.0), 2.0));
         System.out.println(Lambda.func(List.of(1.0, 2.0, 3.0, 4.0, 5.0), Math::sqrt));
         System.out.println(Lambda.numerisch("12", "Wappler", "8", "-5", "8", "Hugo", "-6", "-10", "Hugo", "-10", "7"));
+        Lambda.print(list);
         System.out.println("------------------------");
         StreamsBasic.zahlenreihen();
         StreamsBasic.printFolgeOhne3(10);
@@ -29,6 +31,7 @@ public class Tests {
         System.out.println(StreamsBasic.enthaeltZiffern("Hallo Welt"));
         System.out.println(StreamsBasic.enthaeltZiffern("Hallo Welt 123"));
         System.out.println("------------------------");
+        System.out.println(StreamsAdv.lottoziehung());
         System.out.println(StreamsAdv.berechnePI(-5));
         System.out.println(StreamsAdv.berechnePI(1));
         System.out.println(StreamsAdv.berechnePI(2));
@@ -37,6 +40,7 @@ public class Tests {
         System.out.println(StreamsAdv.zaehleZeichenAusVorrat("Hallo 1AI" , "aeiou"));
         System.out.println(StreamsAdv.zaehleZeichenAusVorrat ("*code*123#" , "?%*!#$"));
         System.out.println(StreamsAdv.createRandomString("1234",5));
+        System.out.println(Arrays.toString(StreamsAdv.deleteEquals(new int[]{1,2,3,4,5,6, 8,9,1,2,7,8,9})));
         System.out.println("------------------------");
         StudentStatistic studentStatistics = new StudentStatistic("ressources/students.csv");
         studentStatistics.printStatistik();

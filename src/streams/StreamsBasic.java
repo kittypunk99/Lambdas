@@ -22,7 +22,7 @@ public class StreamsBasic {
     }
 
     public static void wuerfelStatistik(int augenzahl) {
-        System.out.println((int) IntStream.rangeClosed(1, 1000).map(i -> (int) (Math.random() * 6) + 1).filter(i -> i == augenzahl).count());
+        System.out.println((int) IntStream.rangeClosed(1, 1000).map(_ -> (int) (Math.random() * 6) + 1).filter(i -> i == augenzahl).count());
     }
 
     public static void alleTeiler(int zahl) {
