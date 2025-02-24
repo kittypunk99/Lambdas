@@ -2,6 +2,7 @@ package lambda;
 
 import java.util.*;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class Lambda {
     public static void print(Collection<?> collection) {
@@ -9,8 +10,7 @@ public class Lambda {
     }
 
     public static Collection<String> hauptworte(Collection<String> collection) {
-        return collection.stream().filter(Objects::nonNull).filter(s -> s.matches("[A-ZÄÖÜ][a-zA-ZÄÖÜäöüß]*")).toList();
-
+        return collection.stream().filter(Objects::nonNull).filter(s -> s.matches("\\p{javaUpperCase}\\p{javaLetter}*")).toList();
     }
 
     public static List<Double> mult(List<Double> zahlen, double faktor) {
@@ -22,24 +22,17 @@ public class Lambda {
     }
 
     public static List<String> numerisch(String... elements) {
-        List<Integer> numericList = new ArrayList<>();
-        List<String> stringList = new ArrayList<>();
+        List<String> numericList = Arrays.stream(elements)
+                .filter(e -> e.matches("-?\\d+"))
+                .sorted(Comparator.comparingInt(Integer::parseInt))
+                .toList();
 
-        for (String element : elements) {
-            if (element.matches("-?\\d+")) {
-                numericList.add(Integer.parseInt(element));
-            } else {
-                stringList.add(element);
-            }
-        }
+        List<String> stringList = Arrays.stream(elements)
+                .filter(e -> !e.matches("-?\\d+"))
+                .sorted()
+                .toList();
 
-        Collections.sort(numericList);
-        Collections.sort(stringList);
-
-        List<String> result = new ArrayList<>();
-        for (Integer num : numericList) {
-            result.add(num.toString());
-        }
+        List<String> result = new ArrayList<>(numericList);
         result.addAll(stringList);
 
         return result;
