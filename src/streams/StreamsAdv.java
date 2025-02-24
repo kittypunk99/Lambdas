@@ -15,7 +15,7 @@ public class StreamsAdv {
 
     public static double berechnePI(int anzGlieder) {
         if (anzGlieder <= 0) {
-            return -1.0;
+            return -1.0;//asdf
         }
         double pi = IntStream.range(0, anzGlieder).mapToDouble(i -> Math.pow(-1, i) / (2 * i + 1)).sum();
         return pi * 4;
